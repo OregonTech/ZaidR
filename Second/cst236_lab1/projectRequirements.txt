@@ -1,0 +1,1 @@
+#0001 The system shall be able to determine if a triangle is scalene, equilateral or isosceles

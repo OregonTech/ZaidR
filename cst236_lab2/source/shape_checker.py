@@ -5,6 +5,7 @@
 The following example code determines if a set of 3 sides of a triangle is equilateral, scalene or iscoceles
 """
 
+
 def get_triangle_type(a=0, b=0, c=0):
     """
     Determine if the given triangle is equilateral, scalene or Isosceles
@@ -47,6 +48,7 @@ def get_triangle_type(a=0, b=0, c=0):
         return "isosceles"
     else:
         return "scalene"
+
 
 def get_object_shape__type(a=0, b=0, c=0, d=0):
     if isinstance(a, dict) and len(a.key()) == 4:
@@ -96,5 +98,3 @@ def get_object_shape_type_2(a=0, b=0, c=0, d=0, c1=0, c2=0, c3=0, c4=0):
         return "rhombus"
     if c1 == 0 or c2 == 0 or c3 == 0 or c4 == 0:
         return "disconnected"
-
-

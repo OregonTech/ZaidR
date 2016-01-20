@@ -1,7 +1,8 @@
 from source.question_answer import QA
-from source.shape_checker import get_triangle_type
+from source.shape_checker import get_triangle_type, get_object_shape_type_2
 
 import difflib
+
 NOT_A_QUESTION_RETURN = "Was that a question?"
 UNKNOWN_QUESTION = "I don't know, please provide the answer"
 NO_QUESTION = 'Please ask a question first'
@@ -20,11 +21,12 @@ class Interface(object):
 
         self.question_answers = {
             'What type of triangle is ': QA('What type of triangle is ', get_triangle_type),
-            'What type of quadrilateral is ': QA('What type of quadrilateral is ',),
+            'What type of quadrilateral is ': QA('What type of quadrilateral is ', get_object_shape_type_2),
         }
         self.last_question = None
 
     def ask(self, question=""):
+
         if not isinstance(question, str):
             self.last_question = None
             raise Exception('Not A String!')
@@ -42,7 +44,7 @@ class Interface(object):
             parsed_question = parsed_question[0:-1]
             self.last_question = parsed_question
             for answer in self.question_answers.values():
-                if difflib.SequenceMatcher(a=answer.question, b=parsed_question).ratio() >= .90:
+                if difflib.SequenceMatcher(a=answer.question, b=parsed_question).ratio() >= 90:
                     if answer.function is None:
                         return answer.value
                     else:

@@ -1,15 +1,17 @@
-
 from nose2.events import Plugin
 
 
 class ReqTracer(Plugin):
     configSection = "req-tracer"
 
-    def afterSummeryResult(self, event):
-        outputFile = open("output.txt" ,"w")
-        for key ,item in sorted(Requirements.items()):
-         outputFile.write = (' ')
-         outputFile.write = (key)
+    def afterSummaryReport(self, event):
+        outputFile = open("output.txt", "w")
+        for key, item in sorted(Requirements.items()):
+            outputFile.write(' ')
+            outputFile.write(key)
+            for func in item.func_name:
+                outputFile.write(' ' + func + ' ')
+                outputFile.write('\n')
 
 
 

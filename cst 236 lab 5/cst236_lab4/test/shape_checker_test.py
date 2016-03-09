@@ -20,7 +20,7 @@ class TestFilePath(TestCase):
         attrs = {'communicate.return_value': ('output', '')}
         process_mock.configure_mock(**attrs)
         mock_subproc_popen.return_value = process_mock
-        x = is_file_in_repo("C:\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\projectRequirements.txt")
+        x = is_file_in_repo("C:\Users\Zed\Desktop\cst 236 lab 5\cst236_lab4\projectRequirements.txt")
         self.assertTrue(x)
         self.assertTrue(mock_subproc_popen.called)
 
@@ -31,7 +31,7 @@ class TestFilePath(TestCase):
             'C:\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\projectRequirements.txt', '')}
         process_mock.configure_mock(**attrs)
         mock_subproc_popen.return_value = process_mock
-        x = is_file_in_repo("'C:\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\projectRequirements.txt")
+        x = is_file_in_repo("'C:\Users\Zed\Desktop\cst 236 lab 5\cst236_lab4\projectRequirements.txt")
         self.assertEquals(x, 'No')
         self.assertFalse(mock_subproc_popen.called)
 
@@ -42,7 +42,7 @@ class TestFilePath(TestCase):
         attrs = {'communicate.return_value': ('output', '')}
         process_mock.configure_mock(**attrs)
         mock_subproc_popen.return_value = process_mock
-        x = get_git_file_info("C:\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\projectRequirements.txt")
+        x = get_git_file_info("C:\Users\Zed\Desktop\cst 236 lab 5\cst236_lab4\projectRequirements.txt")
         self.assertEquals(x, 'projectRequirements.txt is a dirty repo')
         self.assertTrue(mock_subproc_popen.called)
 
@@ -52,7 +52,7 @@ class TestFilePath(TestCase):
         attrs = {'communicate.return_value': ('', '')}
         process_mock.configure_mock(**attrs)
         mock_subproc_popen.return_value = process_mock
-        x = get_git_file_info("C:\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\projectRequirements.txt")
+        x = get_git_file_info("C:\Users\Zed\Desktop\cst 236 lab 5\cst236_lab4\projectRequirements.txt")
         self.assertEquals(x, 'projectRequirements.txt is up to date')
         self.assertTrue(mock_subproc_popen.called)
 
@@ -60,10 +60,10 @@ class TestFilePath(TestCase):
     def test_status_of_file_modified(self, mock_subproc_popen):
         process_mock = mock.Mock()
         attrs = {'communicate.return_value': (
-            "C:\\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\projectRequirements.txt", '')}
+            "C:\\Users\Zed\Desktop\cst 236 lab 5\cst236_lab4\projectRequirements.txt", '')}
         process_mock.configure_mock(**attrs)
         mock_subproc_popen.return_value = process_mock
-        x = get_git_file_info("C:\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\projectRequirements.txt")
+        x = get_git_file_info("C:\Users\Zed\Desktop\cst 236 lab 5\cst236_lab4\projectRequirements.txt")
         self.assertEquals(x, 'projectRequirements.txt has been modified locally')
         self.assertTrue(mock_subproc_popen.called)
 
@@ -82,10 +82,10 @@ class TestFilePath(TestCase):
     def test_untracked_file(self, mock_subproc_popen):
         process_mock = mock.Mock()
         attrs = {'communicate.return_value': (
-            "C:\\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\*.txt", '')}
+            "C:\\Users\Zed\Desktop\cst 236 lab 5\cst236_lab4\*.txt", '')}
         process_mock.configure_mock(**attrs)
         mock_subproc_popen.return_value = process_mock
-        x = has_untracked_files("C:\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\projectRequirements.txt")
+        x = has_untracked_files("C:\Users\Zed\Desktop\cst 236 lab 5\cst236_lab4\projectRequirements.txt")
         self.assertTrue(x)
         self.assertTrue(mock_subproc_popen.called)
 
@@ -106,7 +106,7 @@ class TestFilePath(TestCase):
         attrs = {'communicate.return_value': ('', 'error')}
         process_mock.configure_mock(**attrs)
         mock_subproc_popen.return_value = process_mock
-        x = get_git_file_info("C:\Users\Zed\Desktop\cst 236 lab 5-1\cst236_lab4\projectRequirements.txt")
+        x = get_git_file_info("C:\Users\Zed\Desktop\cst 236 lab 5\cst236_lab4\projectRequirements.txt")
         self.assertEqual(x, 'projectRequirements.txt is up to date')
         self.assertTrue(mock_subproc_popen.called)
 
